@@ -47,3 +47,17 @@
 .exploreButton:hover {
   background-color: #6d4c2b;
 }
+
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.post {
+  background-color: rgba(139, 107, 61, 0.8);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 2px solid #6d4c2b;
+}
