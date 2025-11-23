@@ -1,0 +1,24 @@
+.footer {
+  background-color: #8b6b3d;
+  padding: 2rem;
+  border-top: 3px solid #6d4c2b;
+  margin-top: auto;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+}
+
+.copyright {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.squirrelText {
+  color: #f0e6d2;
+  font-weight: bold;
+}

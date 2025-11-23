@@ -1,0 +1,14 @@
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #f9f6f0 0%, #f0e9d8 100%);
+  color: #3a3226;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}

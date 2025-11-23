@@ -1,0 +1,49 @@
+.container {
+  text-align: center;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #856c6c;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 3rem;
+  color: #534545;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.block {
+  margin-top: 6rem;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.block p {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: #534545;
+}
+
+.exploreButton {
+  background-color: #8b6b3d;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.exploreButton:hover {
+  background-color: #6d4c2b;
+}
