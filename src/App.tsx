@@ -1,9 +1,7 @@
-import { useGetAllPostsQuery } from "./services/posts";
+import { Link } from "react-router";
 import s from "./App.module.css";
 
 function App() {
-  const { data: posts, error, isLoading } = useGetAllPostsQuery();
-
   return (
     <div className={s.container}>
       <h1 className={s.title}>🌲 Welcome to Squirrel Blog!</h1>
@@ -12,24 +10,11 @@ function App() {
         seasonal updates, and stories from beneath the canopy.
       </p>
 
-      {error ? (
-        <div>Oh no, there was an error</div>
-      ) : isLoading ? (
-        <div>Loading...</div>
-      ) : posts ? (
-        <div className={s.posts}>
-          {posts.map((post) => (
-            <div key={post.id} className={s.post}>
-              <h3>{post.title}</h3>
-              <p>{post.content}</p>
-            </div>
-          ))}
-        </div>
-      ) : null}
-
       <div className={s.block}>
         <p>Ready to explore the forest life?</p>
-        <button className={s.exploreButton}>Start Exploring →</button>
+        <Link to="/posts">
+          <button className={s.exploreButton}>Start Exploring →</button>
+        </Link>
       </div>
     </div>
   );

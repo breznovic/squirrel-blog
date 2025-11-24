@@ -1,0 +1,39 @@
+.post {
+  background-color: rgba(139, 107, 61, 0.8);
+  padding: 0.9rem;
+  border-radius: 12px;
+  border: 2px solid #6d4c2b;
+}
+
+.title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0 0 1rem 0;
+}
+
+.content {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+
+.button {
+  display: inline-block;
+  background-color: #8b6b3d;
+  margin-top: 1rem;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #6d4c2b;
+}

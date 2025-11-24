@@ -1,0 +1,54 @@
+.post {
+  background-color: rgba(139, 107, 61, 0.8);
+  padding: 0.9rem;
+  border-radius: 12px;
+  border: 2px solid #6d4c2b;
+  max-width: 800px;
+  margin: 2rem auto;
+}
+
+.title {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0 0 1rem 0;
+}
+
+.content {
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  white-space: normal;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.2rem;
+}
+
+.error {
+  color: #ff6b6b;
+}
+
+.backLink {
+  display: inline-block;
+  color: #3a260a;
+  text-decoration: none;
+  font-weight: 500;
+  border: 2px solid #3a260a;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.backLink:hover {
+  background-color: #8b6b3d;
+  color: white;
+}
+
+@media (max-width: 800px) {
+  .post {
+    margin: 2rem 1rem;
+  }
+}

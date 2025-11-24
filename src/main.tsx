@@ -5,6 +5,8 @@ import Layout from "./components/Layout/Layout";
 import "./index.css";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import PostsList from "./components/PostsList/PostsList";
+import PostCard from "./components/PostCard/PostCard";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +14,8 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { index: true, element: <App /> },
-      // { path: "app", element: <App /> },
+      { path: "posts", element: <PostsList /> },
+      { path: "/posts/:id", element: <PostCard /> },
     ],
   },
 ]);
