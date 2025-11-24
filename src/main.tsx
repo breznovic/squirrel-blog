@@ -1,12 +1,12 @@
 import { createRoot } from "react-dom/client";
+import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import App from "./App";
 import Layout from "./components/Layout/Layout";
-import "./index.css";
-import { Provider } from "react-redux";
-import { store } from "./store";
-import PostsList from "./components/PostsList/PostsList";
 import PostCard from "./components/PostCard/PostCard";
+import PostsList from "./components/PostsList/PostsList";
+import "./index.css";
+import { store } from "./store/store";
 
 const router = createBrowserRouter([
   {

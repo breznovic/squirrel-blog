@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
-import { postsApi } from "./services/postsApi";
+import { postsApi } from "../services/postsApi";
+import searchReducer from "./features/search/searchSlice";
 
 export const store = configureStore({
   reducer: {
     [postsApi.reducerPath]: postsApi.reducer,
+    search: searchReducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -12,3 +14,6 @@ export const store = configureStore({
 });
 
 setupListeners(store.dispatch);
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
