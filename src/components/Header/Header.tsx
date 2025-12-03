@@ -6,6 +6,7 @@ import {
   clearSearchQuery,
   setSearchQuery,
 } from "../../store/features/search/searchSlice";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -45,6 +46,7 @@ export const Header = () => {
             )}
           </div>
         )}
+        <ThemeToggle />
       </nav>
     </header>
   );

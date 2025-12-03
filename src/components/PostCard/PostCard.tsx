@@ -1,11 +1,11 @@
 import { Link, useLocation, useParams } from "react-router";
-import { useGetAllPostsQuery } from "../../services/postsApi";
+import { useGetBlogPostsQuery } from "../../services/postsApi";
 import s from "./PostCard.module.css";
 
 function PostCard() {
   const { id } = useParams<{ id: string }>();
   const { state } = useLocation();
-  const { data: posts, isLoading, error } = useGetAllPostsQuery();
+  const { data: posts, isLoading, error } = useGetBlogPostsQuery();
   const postId = id ? Number(id) : NaN;
 
   const postFromState = state?.post;

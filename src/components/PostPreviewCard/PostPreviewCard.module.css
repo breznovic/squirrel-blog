@@ -1,8 +1,19 @@
 .post {
-  background-color: rgba(139, 107, 61, 0.8);
+  background-color: var(--card-bg);
   padding: 0.9rem;
   border-radius: 12px;
   border: 2px solid #6d4c2b;
+}
+
+.data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+[data-theme="dark"] .post {
+  background-color: var(--card-bg);
+  border: 2px solid var(--border-color);
 }
 
 .title {
@@ -10,6 +21,16 @@
   white-space: nowrap;
   overflow: hidden;
   margin: 0 0 1rem 0;
+  color: var(--text-primary);
+}
+
+.date {
+  font-size: 0.875rem;
+  font-weight: 800;
+  color: #2b1e11;
+  white-space: nowrap;
+  margin: 0 0 1rem 0;
+  color: var(--text-secondary);
 }
 
 .content {
@@ -19,11 +40,12 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin: 0;
+  color: var(--text-primary);
 }
 
 .button {
   display: inline-block;
-  background-color: #8b6b3d;
+  background-color: var(--accent-primary);
   margin-top: 1rem;
   color: white;
   padding: 0.5rem 1rem;
@@ -35,5 +57,19 @@
 }
 
 .button:hover {
-  background-color: #6d4c2b;
+  background-color: var(--accent-secondary);
+}
+
+[data-theme="dark"] .button {
+  background-color: #8b6b3d;
+}
+
+[data-theme="dark"] .button:hover {
+  background-color: #664e2d;
+}
+
+@media (max-width: 800px) {
+  .date {
+    display: none;
+  }
 }

@@ -1,7 +1,7 @@
 .footer {
-  background-color: #8b6b3d;
+  background-color: var(--header-bg);
   padding: 2rem;
-  border-top: 3px solid #6d4c2b;
+  border-top: 3px solid var(--header-border);
   margin-top: auto;
 }
 

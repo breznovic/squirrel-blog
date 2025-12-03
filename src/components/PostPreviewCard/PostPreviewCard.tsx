@@ -7,11 +7,27 @@ type Props = {
 };
 
 function PostPreviewCard({ post }: Props) {
-  const { title, content, id } = post;
+  const { title, content, published_at, id } = post;
+
+  const formatDate = (dateString: string) => {
+    if (!dateString) return "Unknown date";
+
+    const date = new Date(dateString);
+    return isNaN(date.getTime())
+      ? "Unknown date"
+      : date.toLocaleDateString("en-EN", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+        });
+  };
 
   return (
     <div className={s.post}>
-      <h3 className={s.title}>{title}</h3>
+      <div className={s.data}>
+        <h3 className={s.title}>{title}</h3>
+        <span className={s.date}>{formatDate(published_at)}</span>
+      </div>
       <p className={s.content}>{content}</p>
       <Link to={`/posts/${id}`} state={{ post }} className={s.button}>
         See post content

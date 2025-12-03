@@ -1,10 +1,16 @@
 .post {
-  background-color: rgba(139, 107, 61, 0.8);
+  background-color: rgba(167, 127, 72, 0.8);
   padding: 0.9rem;
   border-radius: 12px;
   border: 2px solid #6d4c2b;
   max-width: 800px;
   margin: 2rem auto;
+  color: #2e1e08;
+}
+
+[data-theme="dark"] .post {
+  background-color: var(--card-bg);
+  border: 2px solid var(--border-color);
 }
 
 .title {
@@ -14,10 +20,18 @@
   margin: 0 0 1rem 0;
 }
 
+[data-theme="dark"] .title {
+  color: var(--text-primary);
+}
+
 .content {
   line-height: 1.8;
   margin-bottom: 2rem;
   white-space: normal;
+}
+
+[data-theme="dark"] .content {
+  color: var(--text-primary);
 }
 
 .loading,
@@ -40,10 +54,21 @@
   padding: 0.5rem 1rem;
   border-radius: 6px;
   transition: all 0.3s ease;
+  background: #f9f6f025;
 }
 
 .backLink:hover {
   background-color: #8b6b3d;
+  color: white;
+}
+
+[data-theme="dark"] .backLink {
+  color: var(--text-primary);
+  border: 2px solid var(--text-primary);
+}
+
+[data-theme="dark"] .backLink:hover {
+  background-color: var(--accent-primary);
   color: white;
 }
 
