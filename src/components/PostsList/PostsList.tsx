@@ -1,5 +1,6 @@
 import { useEffect, useCallback, useMemo, useReducer, useState } from "react";
 import PostPreviewCard from "../PostPreviewCard/PostPreviewCard";
+import SortControls from "../SortControls/SortControls";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
 import s from "./PostsList.module.css";
@@ -28,11 +29,24 @@ const postsReducer = (
 
 const PostsList = () => {
   const searchQuery = useSelector((state: RootState) => state.search.query);
-  const { data: allPosts, error, isLoading } = useGetBlogPostsQuery();
+  const [sortOption, setSortOption] = useState<"newest" | "oldest">("newest");
+
+  const {
+    data: paginatedData,
+    error,
+    isLoading,
+  } = useGetBlogPostsQuery({ sort: sortOption });
+  const allPosts = paginatedData?.results || [];
+
   const [state, dispatch] = useReducer(postsReducer, {
     visiblePosts: POSTS_PER_LOAD,
   });
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+  const handleSortChange = useCallback((newSortOption: "newest" | "oldest") => {
+    setSortOption(newSortOption);
+    dispatch({ type: "RESET" });
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,8 +62,13 @@ const PostsList = () => {
   }, []);
 
   const filteredPosts = useMemo(() => {
+    if (!Array.isArray(allPosts)) {
+      console.error("Received non-array data for posts:", allPosts);
+      return [];
+    }
+
     const filtered =
-      allPosts?.filter(
+      allPosts.filter(
         (post) =>
           post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
           post.content.toLowerCase().includes(searchQuery.toLowerCase())
@@ -60,7 +79,7 @@ const PostsList = () => {
 
   useEffect(() => {
     dispatch({ type: "RESET" });
-  }, [searchQuery]);
+  }, [searchQuery, sortOption]);
 
   const loadMorePosts = useCallback(() => {
     dispatch({ type: "LOAD_MORE", totalPosts: filteredPosts.length });
@@ -92,6 +111,8 @@ const PostsList = () => {
 
   return (
     <div className={s.container}>
+      <SortControls onSortChange={handleSortChange} />
+
       {searchQuery && postsToShow.length > 0 && (
         <div className={s.searchResults}>
           Found {filteredPosts.length} post
@@ -102,9 +123,16 @@ const PostsList = () => {
       )}
 
       <div className={s.posts}>
-        {postsToShow.map((post) => (
-          <PostPreviewCard key={post.id} post={post} />
-        ))}
+        {postsToShow.length > 0 ? (
+          postsToShow.map((post) => (
+            <PostPreviewCard key={post.id} post={post} />
+          ))
+        ) : (
+          <div className={s.noPosts}>
+            <h3>No posts found</h3>
+            <p>Try different search keywords</p>
+          </div>
+        )}
       </div>
 
       {showScrollTop && (
@@ -113,11 +141,10 @@ const PostsList = () => {
         </button>
       )}
 
-      {postsToShow.length === 0 && (
-        <div className={s.searchResults}>
-          <h3>No posts found</h3>
-          <p>Try different search keywords</p>
-        </div>
+      {state.visiblePosts < filteredPosts.length && (
+        <button onClick={loadMorePosts} className={s.loadMore}>
+          Load more ({filteredPosts.length - state.visiblePosts} left)
+        </button>
       )}
     </div>
   );

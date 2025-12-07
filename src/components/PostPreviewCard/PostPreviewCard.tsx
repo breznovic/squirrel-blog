@@ -7,7 +7,7 @@ type Props = {
 };
 
 function PostPreviewCard({ post }: Props) {
-  const { title, content, published_at, id } = post;
+  const { title, content, published_at, id, category } = post;
 
   const formatDate = (dateString: string) => {
     if (!dateString) return "Unknown date";
@@ -22,16 +22,36 @@ function PostPreviewCard({ post }: Props) {
         });
   };
 
+  const getCategoryDisplayName = (categoryKey: string) => {
+    const categories: Record<string, string> = {
+      nature: "Nature",
+      adventure: "Adventure",
+      food: "Food",
+      friends: "Friends",
+      winter: "Winter",
+      spring: "Spring",
+      summer: "Summer",
+      autumn: "Autumn",
+    };
+    return categories[categoryKey] || categoryKey;
+  };
+
   return (
     <div className={s.post}>
       <div className={s.data}>
         <h3 className={s.title}>{title}</h3>
         <span className={s.date}>{formatDate(published_at)}</span>
       </div>
+
       <p className={s.content}>{content}</p>
-      <Link to={`/posts/${id}`} state={{ post }} className={s.button}>
-        See post content
-      </Link>
+      <div className={s.container}>
+        <Link to={`/posts/${id}`} state={{ post }} className={s.button}>
+          See post content
+        </Link>
+        <div className={`${s.categoryBadge} ${s[`category-${category}`]}`}>
+          {getCategoryDisplayName(category)}
+        </div>
+      </div>
     </div>
   );
 }

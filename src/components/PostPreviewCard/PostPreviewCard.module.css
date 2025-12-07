@@ -68,8 +68,55 @@
   background-color: #664e2d;
 }
 
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.categoryBadge {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: #4a90e2;
+  color: white;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-top: 2.2rem;
+  text-transform: capitalize;
+}
+
+.categoryBadge.category-nature {
+  background-color: #2ecc71;
+}
+.categoryBadge.category-adventure {
+  background-color: #e74c3c;
+}
+.categoryBadge.category-food {
+  background-color: #f39c12;
+}
+.categoryBadge.category-friends {
+  background-color: #9b59b6;
+}
+.categoryBadge.category-winter {
+  background-color: #3498db;
+}
+.categoryBadge.category-spring {
+  background-color: #27ae60;
+}
+.categoryBadge.category-summer {
+  background-color: #f1c40f;
+}
+.categoryBadge.category-autumn {
+  background-color: #d35400;
+}
+
 @media (max-width: 800px) {
   .date {
     display: none;
+  }
+
+  .categoryBadge {
+    margin-top: 1rem;
   }
 }

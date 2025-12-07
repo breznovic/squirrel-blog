@@ -10,6 +10,15 @@ export type Post = {
   updated_at: string;
   user_id: number;
   author: string;
+  category: string;
+};
+
+export type PaginatedPosts = {
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Post[];
+  find: () => void;
 };
 
 export const postsApi = createApi({
@@ -17,9 +26,15 @@ export const postsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "/api/" }),
   tagTypes: ["Post"],
   endpoints: (builder) => ({
-    getBlogPosts: builder.query<Post[], void>({
-      query: () => "posts",
-    }),
+    getBlogPosts: builder.query<PaginatedPosts, { sort?: "newest" | "oldest" }>(
+      {
+        query: ({ sort = "newest" }) => {
+          const ordering = sort === "newest" ? "-published_at" : "published_at";
+          return `posts/?ordering=${ordering}`;
+        },
+        keepUnusedDataFor: 0,
+      }
+    ),
   }),
 });
 

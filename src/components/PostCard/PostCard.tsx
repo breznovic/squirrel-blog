@@ -5,7 +5,11 @@ import s from "./PostCard.module.css";
 function PostCard() {
   const { id } = useParams<{ id: string }>();
   const { state } = useLocation();
-  const { data: posts, isLoading, error } = useGetBlogPostsQuery();
+  const {
+    data: posts,
+    isLoading,
+    error,
+  } = useGetBlogPostsQuery({ sort: "newest" });
   const postId = id ? Number(id) : NaN;
 
   const postFromState = state?.post;

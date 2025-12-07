@@ -1,0 +1,47 @@
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 22px;
+}
+
+.label {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.select {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-primary);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.select:hover {
+  border-color: var(--accent-primary);
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
+}
+
+[data-theme="dark"] .select:hover {
+  border-color: var(--accent-primary);
+  background-color: #333f50;
+}
+
+[data-theme="dark"] .select:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.4);
+}
+
+[data-theme="dark"] .select option {
+  background-color: #2d3748;
+  color: #e2e8f0;
+}

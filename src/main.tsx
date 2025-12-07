@@ -7,6 +7,7 @@ import PostCard from "./components/PostCard/PostCard";
 import PostsList from "./components/PostsList/PostsList";
 import "./index.css";
 import { store } from "./store/store";
+import ToastContainer from "./components/ToastContainer/ToastContainer";
 
 const router = createBrowserRouter([
   {
@@ -23,5 +24,6 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
     <RouterProvider router={router} />
+    <ToastContainer />
   </Provider>
 );
