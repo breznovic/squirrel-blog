@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import type { RootState } from "../../store/store";
 import s from "./PostsList.module.css";
 import { useGetBlogPostsQuery } from "../../services/postsApi";
+import { Link } from "react-router";
 
 const POSTS_PER_LOAD = 3;
 
@@ -111,8 +112,12 @@ const PostsList = () => {
 
   return (
     <div className={s.container}>
-      <SortControls onSortChange={handleSortChange} />
-
+      <div className={s.topMenu}>
+        <SortControls onSortChange={handleSortChange} />
+        <Link to="/posts/new" className={s.createButton}>
+          ✨ Create Post
+        </Link>
+      </div>
       {searchQuery && postsToShow.length > 0 && (
         <div className={s.searchResults}>
           Found {filteredPosts.length} post
@@ -138,12 +143,6 @@ const PostsList = () => {
       {showScrollTop && (
         <button className={s.scrollTop} onClick={scrollToTop}>
           ⬆️
-        </button>
-      )}
-
-      {state.visiblePosts < filteredPosts.length && (
-        <button onClick={loadMorePosts} className={s.loadMore}>
-          Load more ({filteredPosts.length - state.visiblePosts} left)
         </button>
       )}
     </div>

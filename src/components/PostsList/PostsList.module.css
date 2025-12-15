@@ -61,3 +61,44 @@
 .scrollTop:hover {
   transform: translateY(-3px);
 }
+
+.topMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+}
+
+.createButton {
+  background-color: var(--header-bg);
+  color: white;
+  border: 1px solid var(--header-text);
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  margin: 30px 20px 0px 0px;
+}
+
+.createButton:hover {
+  background-color: var(--accent-secondary);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .createButton:hover {
+  border-color: var(--accent-primary);
+  background-color: #333f50;
+}
+
+@media (max-width: 768px) {
+  .createButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    margin: 40px 20px 0px 0px;
+  }
+}

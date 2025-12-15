@@ -8,6 +8,8 @@ import PostsList from "./components/PostsList/PostsList";
 import "./index.css";
 import { store } from "./store/store";
 import ToastContainer from "./components/ToastContainer/ToastContainer";
+import AddPostPage from "./components/AddPostPage/AddPostPage";
+import EditPostPage from "./components/EditPostPage/EditPostPage";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,8 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <App /> },
       { path: "posts", element: <PostsList /> },
+      { path: "posts/new", element: <AddPostPage /> },
+      { path: "posts/:id/edit", element: <EditPostPage /> },
       { path: "/posts/:id", element: <PostCard /> },
     ],
   },

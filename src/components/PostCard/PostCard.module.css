@@ -62,6 +62,152 @@
   color: white;
 }
 
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 2rem;
+  text-wrap: nowrap;
+}
+
+.editDelete {
+  display: flex;
+  gap: 12px;
+}
+
+.editButton,
+.deleteButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  text-align: center;
+  justify-content: center;
+}
+
+.editButton {
+  background-color: var(--accent-primary);
+  color: white;
+  border: none;
+}
+
+.editButton:hover {
+  background-color: var(--accent-secondary);
+  transform: translateY(-2px);
+}
+
+.deleteButton {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.deleteButton:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.modalContent {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  transform: translateY(20px);
+  animation: slideUp 0.4s ease forwards;
+}
+
+.modalTitle {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.modalText {
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.modalActions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.modalCancelButton,
+.modalConfirmButton {
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.modalCancelButton {
+  background-color: #6c757d;
+  color: white;
+}
+
+.modalCancelButton:hover {
+  background-color: #5a6268;
+}
+
+.modalConfirmButton {
+  background-color: #dc3545;
+  color: white;
+}
+
+.modalConfirmButton:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 [data-theme="dark"] .backLink {
   color: var(--text-primary);
   border: 2px solid var(--text-primary);
@@ -72,8 +218,50 @@
   color: white;
 }
 
+[data-theme="dark"] .modalContent {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+}
+
 @media (max-width: 800px) {
   .post {
     margin: 2rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .post {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .actions {
+    gap: 10px;
+    font-size: 0.6rem;
+  }
+
+  .editButton,
+  .deleteButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .modalContent {
+    padding: 1.5rem;
+    width: 95%;
+  }
+
+  .modalActions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .modalCancelButton,
+  .modalConfirmButton {
+    width: 100%;
+    justify-content: center;
   }
 }
